@@ -1,27 +1,11 @@
-import { Flex, Text, Heading, VStack, Divider, useBreakpointValue, useColorModeValue, Box, IconButton, Container, Stack, SimpleGrid, Image, Badge, Thead, Table, Th, Tr, Tbody } from "@chakra-ui/react"
-import Footer from "../src/components/Footer"
-import MinecraftInformation from "../src/components/ProductInformation"
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-import { FaCheckCircle } from 'react-icons/fa';
-import router, { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import Slider from 'react-slick'
+import { Box, Heading, Stack, Thead, Table, Th, Tr, Tbody } from "@chakra-ui/react"
 import Head from "next/head";
-import ProductInformation from "../src/components/ProductInformation";
-import MinecraftProduct from "../src/components/Minecraft/MinecraftProduct";
-import ProductDescribe from "../src/components/ProductDescribe";
-import LocationCard from "../src/components/Minecraft/LocationCard";
-import ApplicationProduct from "../src/components/ApplicationProduct";
-import VPSProduct from "../src/components/VPSProduct";
-import Virtualization from "../src/components/Virtualization";
+import React from 'react';
+import Footer from "../src/components/Footer"
 import DedicatedServer from "../src/components/DedicatedServer";
+import { dedicatedPlans } from "../src/data/plans";
 
 export default function Dedicated() {
-
-
-
-
-
 
     return (
         <>
@@ -35,16 +19,9 @@ export default function Dedicated() {
                     lineHeight={'110%'}>
                     SERVIDORES DEDICADOS
                 </Heading>
-
             </Stack>
 
-
-            <Box
-                py={12}
-                id={"products"}
-            >
-
-
+            <Box py={12} id={"products"}>
                 <Table mt={10} maxH={"10xl"}>
                     <Thead>
                         <Tr p={3}>
@@ -58,15 +35,20 @@ export default function Dedicated() {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <DedicatedServer id={1} network={"500MBPS"} disk={"480GB SSD"} ram={"32GB DDR3"} price={"R$349,99"} location={"Brasil, São Paulo"} cpu={"Intel Xeon E5-2470v2 10c/20t 3.2Ghz"} />
-                        <DedicatedServer id={2} network={"500MBPS"} disk={"480GB SSD"} ram={"64GB DDR3"} price={"R$469,99"} location={"Brasil, São Paulo"} cpu={"Intel Xeon E5-2470v2 10c/20t 3.2Ghz"} />
-                        <DedicatedServer id={3} network={"1GBPS"} disk={"480GB SSD + 2x2TB HDD"} ram={"64GB DDR4"} price={"R$329,99"} location={"Estados Unidos, Vint Hill"} cpu={"Intel Xeon E5-1650v4 - 6c/12t - @ 3.6GHz/4GHz"} />
-                        <DedicatedServer id={4} network={"1GBPS"} disk={"2x450GB NVMe"} ram={"64GB DDR4"} price={"R$399,99"} location={"Estados Unidos, Vint Hill"} cpu={"Intel Core i7-7700K OC - 4c/8t 5.0Ghz"} />
-                        <DedicatedServer id={5} network={"1GBPS"} disk={"2x240GB SSD + 4x2TB HDD"} ram={"256GB DDR3"} price={"R$799,99"} location={"Estados Unidos, Vint Hill"} cpu={"Dual Xeon E5-2650v2 - 16c/32t - 3.4GHZ"} />
-             
+                        {dedicatedPlans.map(plan => (
+                            <DedicatedServer 
+                                key={plan.id}
+                                id={plan.id} 
+                                network={plan.network} 
+                                disk={plan.disk} 
+                                ram={plan.ram} 
+                                price={plan.price} 
+                                location={plan.location} 
+                                cpu={plan.cpu} 
+                            />
+                        ))}
                     </Tbody>
                 </Table>
-
             </Box>
             <Footer />
         </>

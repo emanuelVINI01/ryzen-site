@@ -1,24 +1,24 @@
-import { ChakraProvider, useColorMode } from '@chakra-ui/react'
-import { ColorModeScript } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Footer from '../src/components/Footer'
 import Navbar from '../src/components/Navbar'
 import SideBar from '../src/components/SideBar'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import '../global.css'
 import { useEffect } from 'react'
-function MyApp({ Component, pageProps }) {
+
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     AOS.init();
   }, []);
+  
   return (
-    <ChakraProvider >
+    <ChakraProvider>
       <SideBar>
         <Head>
           <meta name="description" content="Ryzen Host, a melhor hospedagem do mercado." />
-          
-          <script src="chat.js" async/>
+          <script src="chat.js" async />
           <link rel="icon" href="/ryzen.png" />
         </Head>
         <Navbar />
