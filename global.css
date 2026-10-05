@@ -4,3 +4,8 @@
 ::-webkit-scrollbar {
     display: none;
 }
+/* Keep wide plan tables scrollable inside their section on small screens. */
+.chakra-table { display: block; max-width: 100%; overflow-x: auto; }
+@media (max-width: 767px) {
+  .chakra-container, main, .chakra-stack { min-width: 0; max-width: 100%; }
+}
